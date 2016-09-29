@@ -34,11 +34,32 @@ var SongQueue = Backbone.Collection.extend({
     // });
   },
 
-  enqueue: function() {
+  enqueue: function(song) {
+    console.log(this);
     if (this.length === 1) {
       this.playFirst();
     }
   },
+
+  dequeue: function(song) {
+    if (this.at(0) === song) {
+      this.playNext();
+    } else {
+      this.remove(song);
+    }
+    // this.shift();
+  },
+
+  playNext: function() {
+    this.shift();
+    if (this.length >= 1) {
+      this.playFirst();
+    } else {
+      this.trigger('stop');
+    }
+    // this.at(1).play();
+    // this.dequeue();
+  }, 
 
 
   playFirst: function() {
