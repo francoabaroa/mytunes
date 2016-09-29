@@ -3,6 +3,8 @@ var SongModel = Backbone.Model.extend({
 
   initialize: function() {
     console.log('song model');
+
+    
   },
   //WHAT DOES THIS REFER TO?
   play: function() {
